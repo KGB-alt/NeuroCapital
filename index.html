@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestor Financiero con IA</title>
+    <link rel="stylesheet" href="cry.css">
+    <script src="java.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <!-- Fuente personalizada de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!------------------------------------------------------------------------------------------------------------------------------------------------------------------------------->
+    <style>
+        body {
+            height: 100px; /* Para hacer la página larga */
+        }
+        #final {
+            margin-top: 100px; /* Solo para mostrar algo al final de la página */
+            padding: 20px;
+            background-color: rgb(255, 255, 255);
+        }
+    </style>
+<!------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<style>
+    .cuadro {
+        width: 500px;
+        height: 500px;
+        transform: translateX(0px);  /* Mueve el cuadro 50px a la izquierda */
+    }
+</style>
+
+<style>
+    .titulo-imagen {
+        display: flex;
+        align-items: center;
+    }
+    .titulo-imagen img {
+        margin-right: 70px; /* Espacio entre la imagen y el título */
+    }
+</style>
+
+<style>
+    #img1 {
+      clip-path: circle(50%);
+    }
+    </style>
+    
+    <style>
+        .justificado {
+            text-align: justify; /* Alinea el texto justificándolo en ambas márgenes */
+        }
+    </style>
+
+    <style>
+        /* --- Estilos Generales --- */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #ffffff;
+            text-align: center;
+        }
+
+        /* --- Estilo del encabezado --- */
+        header {
+            background: linear-gradient(to right, #000000, #021db6);
+            color: rgb(252, 252, 252);
+            padding: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- Menú de navegación --- */
+        nav {
+            background: #ffffff;
+            padding: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            box-shadow: 0 2px 5px rgb(255, 255, 255);
+        }
+
+        nav a {
+            color: #000000;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 10px 15px;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+
+        nav a:hover {
+            background: #b4afaf;
+            color: rgb(0, 0, 0);
+        }
+
+        /* --- Contenedor principal --- */
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+            background: rgb(255, 255, 255);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        /* --- Botones y formularios --- */
+    
+
+        button {
+            background: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #ffffff;
+        }
+
+        /* --- Estilos para las imágenes --- */
+        img {
+            max-width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        img:hover {
+            transform: scale(1.05);
+        }
+
+        /* --- Sección de imágenes y texto --- */
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .image-container img {
+            width: 180px;
+            height: 180px;
+            border-radius: 10px;
+            object-fit: cover;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* --- Estilos para el modal --- */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background: white;
+            margin: 15% auto;
+            padding: 20px;
+            width: 50%;
+            text-align: left;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .close {
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ffffff;
+        }
+
+        .close:hover {
+            color: rgb(0, 0, 0);
+        }
+
+        /* --- Sección adicional de visión futura --- */
+        .vision {
+            background: #f8f8f8;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        /* --- Pie de página --- */
+        footer {
+            background: #222121;
+            color: white;
+            padding: 10px;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+    </style>
+     <style>
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .image {
+            width: 300px;
+            height: auto;
+            animation: fadeIn 3s ease-in forwards;
+        }
+    </style>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <header>
+    </div>
+    </header>
+
+    <nav>
+        <nav class="navbar bg-body-tertiary fixed-top">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">NeuroCapital</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                  <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Navegacion</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="https://www.youtube.com/watch?v=hlDw7ktS8_8&ab_channel=silvestreaburto">Aplicativo Financiero</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        .......
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#"> <button onclick="scrollToBottom()">Contactanos</button></a></li>
+                        <li><a href="#" onclick="openTermsModal()">Términos de Uso</a>
+                            <div id="termsModal" class="modal">
+                                <div class="modal-content">
+                                    <span class="close" onclick="closeTermsModal()">&times;</span>
+                                    <h2>Términos y Condiciones</h2>
+                                    <p class="justificado">Este aplicativo se encuentra en su fase beta, lo que implica que su desarrollo aún está en curso y puede presentar inconsistencias en la información proporcionada, así como en las recomendaciones generadas. En consecuencia, se recomienda utilizar la aplicación con criterio y moderación. Dado que el sistema sigue en evolución, no se deben tomar decisiones fundamentadas exclusivamente en los datos o sugerencias ofrecidas en esta versión preliminar.  </p>
+                                </div>
+                            </div></li>
+                        <li>
+                          <hr class="dropdown-divider">
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                  
+                </div>
+              </div>
+            </div>
+          </nav>
+    </nav>
+    <img id="img1" src="https://media-hosting.imagekit.io//6eeeef40fbd84601/index.jpg?Expires=1836314902&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=168FNc9crrg4mhl3vTHql56-IYVD~ajWZKEj7PtKCK~oPFfvgn-TX6OzmfhaSSxrAZ7QlhLy73AkUNIumiUnmPk8SuarMJYmK777Idn-cFk8ANFabuwCddTiKLh8~2dEy1hkP2m5kOeUMMw6RvIIBiQsN8QHhcqBv9TdAAAwcrIMQrCjCmxCvfj6tI2GIDtwHY2fj410H6QEdCa5Rs3Oju4V8R~cp4PcquWtLAlGXXt8Vrr~rEgUHYSCHmbKscYxnGCk1FC3fmw1GwTef~nYIRXzO9alo8HXNL8h~Jvi3yuD3UMne5OEgq9fEPsLgNzg0vA8aJ687zti078O1Dx1OA__" alt="Imagen" width="200" height="200">
+
+    <div class="recuadro">
+    <script>
+        function openTermsModal() {
+            document.getElementById('termsModal').style.display = 'block';
+        }
+        function closeTermsModal() {
+            document.getElementById('termsModal').style.display = 'none';
+        }
+    </script>
+   
+<h1><p class="centro">NeuroCapital-IA</p></h1>
+<div class="container vision">
+<p><img src="https://img.freepik.com/fotos-premium/proyectos-financieros-pantalla-vibrante-junto-graficos-dinamicos-explosion-vision-digital_896558-4051.jpg" >
+<h3><p class="centro">Introduccion De La Inteligencia Artificial</p></h3>
+   
+   <p class="justificado">La inteligencia artificial (o mejor conocida como IA) es un conjunto de tecnologías que permiten que las computadoras realicen una variedad de funciones avanzadas, incluida la capacidad de ver, comprender y traducir lenguaje hablado y escrito, analizar datos; etc.es una disciplina y un conjunto de capacidades cognoscitivas e intelectuales expresadas por sistemas informáticos o combinaciones de algoritmos cuyo propósito es la creación de máquinas que imiten la inteligencia humana para realizar tareas, y que pueden mejorar conforme recopilen información. </p> 
+</section>
+    
+<h3><p class="centro">Vision a Futuro</p></h3>
+
+
+<p class="justificado">Nuestra visión es transformar la manera en que los usuarios toman decisiones económicas, integrando inteligencia artificial para no solo automatizar tareas, sino también para optimizar y mejorar la toma de decisiones sobre la gestión de su capital. A través de un análisis profundo y preciso de datos financieros, la IA será capaz de predecir tendencias de mercado, permitiendo a los consumidores aprovechar oportunidades emergentes y maximizar su rentabilidad. Queremos proporcionar acceso a una amplia gama de herramientas y recursos financieros, desde recomendaciones personalizadas de inversión hasta un acompañamiento constante en la evolución del mercado, brindando a los usuarios información relevante y actualizada que les permita tomar decisiones más informadas y estratégicas. De esta manera, no solo facilitaríamos la inversión a futuro, sino que también ofreceríamos las herramientas necesarias para que cada persona pueda acceder a las mejores oportunidades en este nuevo mundo impulsado por la tecnología. </p>  
+
+<h3><p class="centro">Objetivo De NeuroCapital-IA</p></h3>
+
+<p class="justificado">El propósito de este proyecto es proporcionar una solución integral y eficiente para la gestión financiera personal. Buscamos optimizar la planificación y el agendamiento financiero, permitiendo a nuestros usuarios manejar sus recursos económicos de manera estructurada, estratégica y con un enfoque educativo. A través de herramientas intuitivas y un soporte basado en inteligencia artificial, facilitamos la toma de decisiones financieras informadas, promoviendo una administración efectiva del dinero y el fortalecimiento de hábitos financieros saludables. Con nuestro apoyo, aspiramos a mejorar la experiencia de nuestros clientes, permitiéndoles alcanzar una mayor estabilidad y seguridad económica a largo plazo.</p> </p>  
+
+    <!-- Contenedor de imágenes centrado -->
+<div class="image-gallery">
+    <div class="image-item">
+        <img src="https://www.gaceta.unam.mx/wp-content/uploads/2024/04/240401-aca8-des-f1-La-IA-podria-reducir-costos.jpg" alt="Image Animation" class="image">
+    </div>
+    <div class="image-item">
+        <img src="https://diariobusinessnews.com/wp-content/uploads/2024/05/inteligencia-artificial-servicios-financieros.jpg" alt="Image Animation" class="image">
+    </div>
+</div>
+<div class="image-gallery">
+    <div class="image-item">
+        <img src="https://iccsi.com.ar/wp-content/uploads/como-afectara-la-ia-a-los-mercados-financieros.webp" alt="Image Animation" class="image">
+    </div>
+</div>
+</div>
+<!-- Estilos para el diseño de la galería de imágenes -->
+<style>
+    .image-gallery {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+    
+    .image-item {
+        width: 250px;
+        height: 250px;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+    
+    .image-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 15px;
+    }
+    
+    .image-item:hover {
+        transform: scale(1.05);
+    }
+</style>
+
+<div class="container vision">
+<h2><p class="centro">Era Financiera Con Ayuda de la Inteligencia-Artificial</p></h2>
+   
+   <p class="justificado">El Amanecer de una Nueva Era Financiera
+    Imagina un mundo donde cada decisión financiera que tomas está respaldada por un asesor virtual con una capacidad de análisis que supera cualquier mente humana. Un entorno donde la incertidumbre de los mercados ya no sea una amenaza, sino una oportunidad calculada. Ese mundo no es un sueño lejano: es el presente que la Inteligencia Artificial (IA) está forjando en el ámbito financiero.
+    
+    Los mercados de valores, la planificación financiera y la gestión del riesgo ya no dependen únicamente de la intuición de analistas o de modelos tradicionales. Hoy, avanzados algoritmos de IA procesan cantidades inimaginables de datos en milisegundos, detectan patrones ocultos y anticipan movimientos con una precisión nunca antes vista. La economía, una vez regida por corazonadas y experiencia, se encuentra en plena metamorfosis, moldeada por la lógica infalible de la inteligencia artificial.
+    
+    El Poder de la IA en las Finanzas
+    La IA no solo optimiza procesos, sino que revoluciona la forma en que interactuamos con el dinero. Desde el análisis predictivo hasta el comercio automatizado, su impacto es profundo y en constante expansión:
+    
+    <p class="justificado">🔹Análisis Predictivo y Modelado de Riesgo
+    Los modelos tradicionales de predicción financiera palidecen frente a los algoritmos de Machine Learning, que absorben datos históricos y en tiempo real para anticipar tendencias de mercado. No solo identifican oportunidades de inversión, sino que también advierten sobre posibles crisis con suficiente antelación.</p>
+    
+    <p class="justificado">🔹Trading Algorítmico: La Nueva Velocidad del Dinero
+    Los mercados financieros han sido testigos de un cambio radical con el trading algorítmico. Robots financieros, programados con IA, ejecutan transacciones en fracciones de segundo, aprovechando fluctuaciones mínimas de precios para maximizar ganancias. Los grandes fondos de inversión han encontrado en esta tecnología una ventaja competitiva sin precedentes.</p>
+    
+    <p class="justificado">🔹Finanzas Personalizadas: Tu Asesor Virtual Siempre Disponible
+    La banca tradicional ha sido sacudida por la irrupción de asesores financieros impulsados por IA. Estos sistemas pueden analizar el comportamiento de gasto de una persona, sugerir estrategias de ahorro e inversión e incluso prever problemas financieros antes de que ocurran.</p>
+    
+    <p class="justificado">🔹Blockchain e IA: La Fusión del Futuro Financiero
+    La combinación de IA con tecnologías como blockchain está creando ecosistemas financieros más seguros, descentralizados y eficientes. Smart contracts inteligentes, análisis de fraudes en tiempo real y criptomonedas autorreguladas son solo el principio de una revolución que desafía la estructura tradicional del dinero.</p>
+    
+    <p class="justificado">🔹Desafíos y el Lado Oscuro de la IA en Finanzas:</p>
+    <p class="justificado">Pero no todo es brillante en este panorama. La IA, como cualquier herramienta poderosa, conlleva riesgos. La automatización extrema puede desencadenar una volatilidad incontrolable en los mercados, ya que múltiples algoritmos pueden reaccionar simultáneamente ante una señal de caída, provocando desplomes instantáneos.</p>
+    
+    <p class="justificado">Además, la dependencia excesiva en estos sistemas plantea preguntas éticas: ¿qué sucede si una IA comete un error y causa una pérdida masiva? ¿Quién es responsable? La falta de regulación específica es un desafío que el mundo financiero deberá enfrentar pronto.</p>
+    
+    <p class="justificado">Hacia un Futuro Inteligente: La IA Como Aliado, No Sustituto
+    <p class="justificado">La inteligencia artificial está aquí para quedarse, pero su verdadero potencial se desbloquea cuando se combina con la inteligencia humana. Los mejores resultados no provienen de la automatización total, sino de una sinergia entre analistas financieros y sistemas de IA que trabajan en conjunto.</p>
+    
+    <p class="justificado">Estamos ante la puerta de una nueva era, donde la IA nos permitirá tomar decisiones más informadas, eliminar ineficiencias y democratizar el acceso a herramientas financieras avanzadas. Pero al final del día, el control sigue en nuestras manos.</p>
+    
+    <p class="justificado">El futuro de las finanzas no es solo digital, sino inteligente. Y aquellos que entiendan esta transformación serán quienes lideren el camino en esta era de datos, velocidad y precisión.  </p> 
+</div>
+    <style>
+        .container.vision {
+            text-align: center;
+        }
+    
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+    
+        .image-box {
+            position: relative;
+            width: 250px;
+            text-align: center;
+        }
+    
+        .image-box img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+    
+        .overlay {
+            position: center;
+            top: 50%;
+            left: 50%;
+            transform: translate(10%, 10%);
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px 10px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            width: 80%;
+            text-align: center;
+        }
+    
+        .info-text {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 15px;
+            color: #333;
+        }
+    
+        .email {
+            text-align: center;
+            font-size: 17px;
+            color: #333;
+            margin-top: 15px; /* Ajusta el espacio entre las imágenes y el email */
+            font-weight: bold;
+        }
+    </style>
+    
+    <div id="final">
+        <div class="container vision">
+            <h3>Contáctanos</h3>
+            <p>Nos puedes contactar con la siguiente información:</p>
+            
+            <div class="image-container">
+                <div class="image-box">
+                    <img src="https://www.mcafee.com/blogs/wp-content/uploads/2024/07/800x450_Blog_071724.png" alt="IA Finanzas">
+                    <div class="overlay">Daniel Sulbaran</div>
+                    <p class="info-text">Desarrollador y diseñador del sistema financiero con IA. Especializado en optimización de procesos financieros.</p>
+                    <p class="info-text">3009801698</p>
+                </div>
+                
+                <div class="image-box">
+                    <img src="https://vivefinanzas.com/wp-content/uploads/2024/08/Inteligencia-Artificial.jpg" alt="AI Futuro">
+                    <div class="overlay">Kevin Andrés Giraldo</div>
+                    <p class="info-text">Experto en inteligencia artificial aplicada a la gestión económica y planificación financiera estratégica.</p>
+                    <p class="info-text">3182425026</p>
+                </div>
+            </div>
+        
+            <!-- EMAIL CENTRADO -->
+            <p class="email">NeuroCapital.IA@gmail.com</p>
+        </div>
+    </div>
+    </div>
+    <script>
+        function scrollToBottom() {
+            window.scrollTo({
+                top: document.body.scrollHeight,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+    <footer>
+        © 2025 Gestor Financiero - Todos los derechos reservados.
+    </footer>
+
+    <script>
+        function analyzeFinances() {
+            let income = parseFloat(document.getElementById('income').value) || 0;
+            let expenses = parseFloat(document.getElementById('expenses').value) || 0;
+            let balance = income - expenses;
+            let message = `Saldo mensual: $${balance.toFixed(2)}`;
+
+            if (balance > 500) message += " ¡Buen trabajo! Puedes ahorrar e invertir.";
+            else if (balance > 0) message += " Tus finanzas están equilibradas, pero podrías reducir gastos.";
+            else message += " Tienes un déficit, intenta reducir gastos o aumentar ingresos.";
+            
+            document.getElementById('suggestions').innerHTML = message;
+        }
+
+        function limitInputLength(element, maxLength) {
+        let value = element.value.replace(/\D/g, ''); // Elimina caracteres no numéricos
+        if (value.length > maxLength) {
+            element.value = value.slice(0, maxLength); // Limita la longitud
+        }
+    }
+
+    function analyzeFinances() {
+        let income = parseFloat(document.getElementById('income').value) || 0;
+        let expenses = parseFloat(document.getElementById('expenses').value) || 0;
+
+        // Asegurar que los valores no excedan 10 dígitos
+        income = Math.min(income, 9999999999);
+        expenses = Math.min(expenses, 9999999999);
+
+        let balance = income - expenses;
+        let message = `Saldo mensual: $${balance.toFixed(2)}`;
+
+        if (balance > 500) message += " ¡Buen trabajo! Puedes ahorrar e invertir.";
+        else if (balance > 0) message += " Tus finanzas están equilibradas, pero podrías reducir gastos.";
+        else message += " Tienes un déficit, intenta reducir gastos o aumentar ingresos.";
+        
+        document.getElementById('suggestions').innerHTML = message;
+    }
+
+    
+
+        function exportData() {
+            let income = document.getElementById('income').value || 0;
+            let expenses = document.getElementById('expenses').value || 0;
+            let csvContent = `Ingresos,Gastos\n${income},${expenses}`;
+            let blob = new Blob([csvContent], { type: 'text/csv' });
+            let link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'finanzas.csv';
+            link.click();
+        }
+
+        async function askAI() {
+            let query = document.getElementById('chatInput').value;
+            if (!query) return;
+            
+            try {
+                let response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer TU_CLAVE_DE_API'
+                    },
+                    body: JSON.stringify({
+                        model: 'gpt-4',
+                        messages: [{ role: 'user', content: query }],
+                        max_tokens: 100
+                    })
+                });
+                let data = await response.json();
+                document.getElementById('aiResponse').innerHTML = `IA: ${data.choices[0].message.content}`;
+            } catch (error) {
+                document.getElementById('aiResponse').innerHTML = "Error al comunicarse con la IA.";
+            }
+        }
+    </script>
+</body>
+</html>
